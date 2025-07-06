@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Gerenciador de Estoque</title>
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background: #f8f9fa; }
+        .container { margin-top: 30px; }
+        .avaliacoes-lista { max-height: 150px; overflow-y: auto; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1 class="mb-4">Gerenciador de Estoque</h1>
+
+    <div class="card mb-4">
+        <div class="card-header">Adicionar ou Atualizar Produto</div>
+        <div class="card-body">
+            <form id="produtoForm" class="row g-3">
+                <div class="col-md-2">
+                    <input type="text" id="codigo" class="form-control" placeholder="Código" required>
+                </div>
+                <div class="col-md-2">
+                    <input type="text" id="nome" class="form-control" placeholder="Nome do Produto" required>
+                </div>
+                <div class="col-md-2">
+                    <input type="number" id="quantidade" min=0 class="form-control" placeholder="Quantidade" required>
+                </div>
+                <div class="col-md-2">
+                    <input type="date" id="validade" class="form-control" placeholder="Validade" required>
+                </div>
+                <div class="col-md-2">
+                    <input type="number" step=0.01 min=0 id="preco" class="form-control" placeholder="Preço (R$)" required>
+                </div>
+                <div class="col-md-2 d-flex align-items-end">
+                    <button type="submit" class="btn btn-primary w-100">Salvar</button>
+                </div>
+
+                <div class="col-md-3 mt-2">
+                    <input type="text" id="fornecedor_nome" class="form-control" placeholder="Fornecedor (Nome)" required>
+                </div>
+                <div class="col-md-3 mt-2">
+                    <input type="text" id="fornecedor_contato" class="form-control" placeholder="Fornecedor (Contato)" required>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <h4>Produtos em Estoque</h4>
+    <table class='table table-bordered table-striped' id='produtosTabela'>
+        <thead><tr>
+            <th>Código</th><th>Nome</th><th>Qtd.</th><th>Validade</th><th>Preço (R$)</th><th>Fornecedor</th><th>Status</th><th>Ações</th><th>Avaliações</th></tr></thead>
+        <tbody></tbody>
+    </table>
+
+    <h4>Avaliar Disponibilidade do Produto</h4>
+    <form id='avaliacaoForm' class='row g-3 mb-4'>
+        <div class='col-md-3'>
+            <input type='text' id='codigoAvaliacao' placeholder='Código' required class='form-control'>
+        </div>
+        <div class='col-md-6'>
+            <input type='text' id='comentarioAvaliacao' placeholder='Escreva sua avaliação aqui...' required maxlength=100 class='form-control'>
+        </div>
+        <div class='col-md-3 d-flex align-items-end'>
+            <button type='submit' class='btn btn-success w-100'>Enviar</button>
+        </div>
+    </form>
+
+    <h5>Avaliações dos Clientes:</h5>
+    <ul id='listaAvaliacoes' class='list-group avaliacoes-lista'></ul>
+
+</div>
+
+<script src="./estoque.js"></script>
+
+<script src="//cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+</body></html>
